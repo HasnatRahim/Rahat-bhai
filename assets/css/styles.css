@@ -72,6 +72,7 @@ nav ul {
   padding: 0;
 }
 
+
 nav ul li {
   float: left;
   position: relative;
@@ -153,7 +154,7 @@ nav ul li:hover > a {
   display: none;
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 0px;
   height: 70px;
   width: 70px;
 }
@@ -162,7 +163,7 @@ nav ul li:hover > a {
 #nav-toggle {
   position: absolute;
   top: 22px;
-  right: 20px;
+  left: 5px;
   cursor: pointer;
   padding: 10px;
 }
@@ -206,13 +207,35 @@ nav ul li:hover > a {
   transform: rotate(-45deg);
 }
 
+
+/* Overlay styles */
+#overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Below the navbar but above the main content */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* When the overlay is active */
+#overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+
 .slide {
   margin: 0 auto;
 }
 
 .carousel-item {
-  height: 90vh; 
-  min-height: 300px; 
+  height: 90vh;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,6 +260,12 @@ nav ul li:hover > a {
   z-index: 2;
   text-align: center;
   text-shadow: 3px 3px 20px #000000, -2px 1px 30px #000000;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .carousel-caption h1 {
   font-size: 60px;
@@ -245,7 +274,7 @@ nav ul li:hover > a {
   margin-top: 25px;
 }
 .carousel-caption p {
-  width: 60%;
+  width: 65%;
   margin: auto;
   font-size: 18px;
   line-height: 1.9;
@@ -400,6 +429,7 @@ main .service .card {
   font-weight: 800;
   transition: ease-in-out 0.3s;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  cursor: pointer;
 }
 
 main .service .card:hover {
@@ -460,13 +490,7 @@ main .service .c6 {
 }
 
 /* footer start */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-}
+
 a,
 a:hover,
 a:focus,
@@ -616,25 +640,51 @@ button {
   display: block;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.social_profile:hover footer-i{
+color: var(--secondary-color);
+}
 @media only screen and (max-width: 768px) {
   .carousel-item {
     height: auto;
   }
- .carousel-img{
-  background-position: center;
-  height: 85vh; 
- }
+  .carousel-img {
+    background-position: center;
+    height: 85vh;
+  }
   .social_profile ul li a {
     margin-right: 10px;
     margin-bottom: 10px;
   }
 }
 @media only screen and (max-width: 480px) {
-
-  .carousel-caption h1 {
-    font-size: 3rem;
+  nav  {
+    
   }
 
+
+  @media only screen and (max-width: 798px) {
+    #overlay {
+      display: none; /* Default for mobile */
+    }
+  
+    nav ul.show {
+      display: block; /* Ensure nav shows when toggled */
+    }
+  }
+  
+  
+  .carousel-caption {
+    padding-bottom: 6.25rem !important;
+  }
+
+  .carousel-caption h1 {
+    font-size: 2.5rem;
+  }
+
+  .carousel-caption-p {
+    display: none;
+  }
 
   .social_profile ul li a {
     width: 40px;
@@ -643,10 +693,11 @@ button {
   }
 }
 .social_profile ul li a:hover {
-  background: var(--primary-shade);
-  border: 1px solid var(--primary-shade);
-  color: #fff;
-  border: 0px;
+  background: var(--primary-color);
+  border: 1px solid black;
+  color: black;
+  border: 1px solid white;
+  border-radius: 20%;
 }
 /*END SOCIAL PROFILE CSS*/
 .copyright {
@@ -677,7 +728,9 @@ button {
 
 @media only screen and (max-width: 798px) {
   .nav-mobile {
-    display: block;
+    display: flex;
+
+
   }
 
   nav {
@@ -704,11 +757,20 @@ button {
 
   .nav-dropdown {
     position: static;
+    box-shadow: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 
   nav ul.show {
     display: block;
     background: var(--primary-color);
     padding: 0;
+  }
+}
+
+
+@media only screen and (min-width: 100px) and (max-width: 700px) {
+  .add-br {
+      display: none;
   }
 }
